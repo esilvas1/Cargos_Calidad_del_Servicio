@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profesional P1 · Calidad de la Potencia Eléctrica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #12212b;
+      --ink-soft: #3a4f5c;
+      --muted: #6b7f8c;
+      --paper: #f3f6f4;
+      --paper-2: #e7eee9;
+      --line: rgba(18, 33, 43, 0.12);
+      --accent: #0f7a6c;
+      --accent-deep: #0a554b;
+      --signal: #c47a1a;
+      --glow-soft: rgba(15, 122, 108, 0.14);
+      --radius: 2px;
+      --max: 1080px;
+      --nav-h: 64px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Sora", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(15, 122, 108, 0.12), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(196, 122, 26, 0.10), transparent 50%),
+        linear-gradient(180deg, #f7faf8 0%, var(--paper) 40%, #eef3f0 100%);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent 70%);
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(243, 246, 244, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-mark img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-copy strong {
+      font-family: "Fraunces", serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-copy span {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-brand {
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.8s ease 0.05s forwards;
+    }
+
+    .hero-brand a {
+      display: inline-block;
+    }
+
+    .hero-brand img {
+      height: clamp(52px, 8vw, 72px);
+      width: auto;
+      display: block;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img {
+      height: 36px;
+      width: auto;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding: 0.45rem 0.7rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--accent-deep);
+      border-color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: grid;
+      align-content: center;
+      padding: 4rem 0 5rem;
+      position: relative;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.8s ease 0.1s forwards;
+    }
+
+    .hero h1 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 14ch;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise 0.9s ease 0.25s forwards;
+    }
+
+    .hero p.lead {
+      max-width: 38rem;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise 0.9s ease 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise 0.9s ease 0.55s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent-deep);
+    }
+
+    .wave {
+      position: absolute;
+      right: -4%;
+      bottom: 8%;
+      width: min(42vw, 420px);
+      height: 180px;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .wave path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      opacity: 0.45;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: draw 2.4s ease 0.6s forwards;
+    }
+
+    .wave path:nth-child(2) {
+      stroke: var(--signal);
+      opacity: 0.35;
+      animation-delay: 0.9s;
+    }
+
+    .wave path:nth-child(3) {
+      stroke: var(--ink);
+      opacity: 0.18;
+      animation-delay: 1.15s;
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2.25rem;
+      max-width: 40rem;
+    }
+
+    .section-head .num {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    .section-head h2 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+
+    /* Mission band */
+    .mission {
+      background: linear-gradient(135deg, rgba(15, 122, 108, 0.08), rgba(196, 122, 26, 0.06));
+      border: 1px solid var(--line);
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--signal));
+    }
+
+    .mission p {
+      font-size: 1.05rem;
+      max-width: 52rem;
+      color: var(--ink);
+    }
+
+    /* Filter chips - interaction containers */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .filter:hover { border-color: var(--accent); color: var(--accent-deep); }
+    .filter.is-on {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Activity list */
+    .activity-list {
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .activity {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 1.25rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease, background 0.25s ease;
+    }
+
+    .activity.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .activity.is-hidden {
+      display: none;
+    }
+
+    .activity:hover {
+      background: linear-gradient(90deg, var(--glow-soft), transparent 70%);
+    }
+
+    .activity-index {
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+      color: var(--accent);
+      min-width: 2.2rem;
+      padding-top: 0.1rem;
+    }
+
+    .activity h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .activity p {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      font-weight: 300;
+      max-width: 48rem;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-left: 2px solid var(--signal);
+      padding-left: 0.45rem;
+    }
+
+    /* Group blocks */
+    .group {
+      margin-bottom: 3rem;
+    }
+
+    .group-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .group-title h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .group-title span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .group > p {
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      max-width: 40rem;
+    }
+
+    /* Closing */
+    .closing {
+      text-align: left;
+      padding-bottom: 5rem;
+    }
+
+    .closing .summary {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      line-height: 1.35;
+      max-width: 36rem;
+      letter-spacing: -0.02em;
+    }
+
+    .closing .meta {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 2.5rem; min-height: auto; }
+      .wave { display: none; }
+      .wrap { width: min(100% - 1.5rem, var(--max)); }
+      .brand-copy { display: none; }
+      .brand-mark img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand-mark" href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer" aria-label="CENS — sitio oficial">
+        <img src="logo-cens.svg" alt="Logo CENS Grupo EPM" width="189" height="83" />
+        <div class="brand-copy">
+          <strong>Calidad de la Potencia</strong>
+          <span>Unidad Gestión Operativa</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#mision">Misión</a>
+        <a href="#actividades">Actividades</a>
+        <a href="#cierre">Síntesis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="inicio" aria-label="Presentación del cargo">
+      <div class="hero-brand">
+        <a href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer">
+          <img src="logo-cens.svg" alt="Centrales Eléctricas del Norte de Santander — CENS Grupo EPM" width="189" height="83" />
+        </a>
+      </div>
+      <p class="hero-kicker">Profesional P1 · Código 81173</p>
+      <h1>Calidad de la Potencia Eléctrica</h1>
+      <p class="lead">
+        Actividades del cargo apoyadas en datos SCADA, alineadas con el análisis,
+        integridad, cálculo y reporte de la calidad de la potencia en el Sistema
+        de Transmisión y Distribución.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#actividades">Ver actividades</a>
+        <a class="btn btn-ghost" href="#mision">Función básica</a>
+      </div>
+      <svg class="wave" viewBox="0 0 420 180" aria-hidden="true">
+        <path d="M10 90 C 60 20, 100 160, 150 90 S 240 20, 290 90 S 380 160, 410 90" />
+        <path d="M10 110 C 70 50, 110 150, 170 110 S 260 50, 320 110 S 390 150, 410 110" />
+        <path d="M10 70 C 50 40, 90 120, 140 70 S 230 40, 280 70 S 370 120, 410 70" />
+      </svg>
+    </section>
+
+    <section id="mision">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="num">01 · Función básica</p>
+          <h2>Para qué existe el cargo</h2>
+          <p>Marco orientador según la descripción oficial del puesto.</p>
+        </div>
+        <div class="mission reveal">
+          <p>
+            Ejecutar actividades asociadas al análisis, integridad, cálculo y reporte
+            de la información de Calidad de la Potencia Eléctrica del Sistema de
+            Transmisión y Distribución, aplicando la normatividad vigente, con el fin
+            de lograr la continuidad, calidad y seguridad en la prestación del servicio
+            de energía eléctrica y contribuir al logro de los objetivos empresariales.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="actividades">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="num">02 · Alcance operativo</p>
+          <h2>Actividades que se pueden realizar</h2>
+          <p>
+            Inventario práctico del día a día, con énfasis en el uso de datos SCADA
+            y en las funciones principales del cargo.
+          </p>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Filtrar por tipo de actividad">
+          <button type="button" class="filter is-on" data-filter="all">Todas</button>
+          <button type="button" class="filter" data-filter="scada">SCADA y monitoreo</button>
+          <button type="button" class="filter" data-filter="estudios">Estudios</button>
+          <button type="button" class="filter" data-filter="reportes">Reportes</button>
+          <button type="button" class="filter" data-filter="infra">Infraestructura de medida</button>
+          <button type="button" class="filter" data-filter="mejora">Mejora y operación</button>
+          <button type="button" class="filter" data-filter="gestion">Coordinación</button>
+        </div>
+
+        <div class="group" data-group="scada">
+          <div class="group-title reveal">
+            <h3>Monitoreo y análisis operativo</h3>
+            <span>SCADA</span>
+          </div>
+          <p class="reveal">Vigilancia continua de la red con señales de supervisión y control.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="scada">
+              <span class="activity-index">01</span>
+              <div>
+                <h3>Revisar tendencias operativas</h3>
+                <p>Seguimiento rutinario de tensión, corriente, potencia, factor de potencia y eventos en barras y alimentadores.</p>
+                <span class="tag">Función 3 · Análisis de parámetros</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="scada">
+              <span class="activity-index">02</span>
+              <div>
+                <h3>Contrastar SCADA con medidores PQ</h3>
+                <p>Validar coherencia entre señales SCADA y registros de calidad de potencia para asegurar integridad de la información.</p>
+                <span class="tag">Función básica · Integridad de datos</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="scada">
+              <span class="activity-index">03</span>
+              <div>
+                <h3>Detectar comportamientos atípicos</h3>
+                <p>Identificar sags, swells, desbalances, sobrecargas u oscilaciones y documentar hallazgos para análisis posterior.</p>
+                <span class="tag">Función 7 · Identificación de causas</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="scada">
+              <span class="activity-index">04</span>
+              <div>
+                <h3>Analizar cargabilidad de activos</h3>
+                <p>Evaluar transformadores y alimentadores e identificar condiciones que impacten el funcionamiento normal de la infraestructura.</p>
+                <span class="tag">Función 13 · Cargabilidad</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="group" data-group="estudios">
+          <div class="group-title reveal">
+            <h3>Estudios e integridad de información</h3>
+            <span>Análisis técnico</span>
+          </div>
+          <p class="reveal">Modelación, estudios normativos y control de calidad de datos.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="estudios">
+              <span class="activity-index">05</span>
+              <div>
+                <h3>Modelar sistemas eléctricos</h3>
+                <p>Representar tramos o subestaciones para estudiar perturbaciones que afectan la calidad de la potencia.</p>
+                <span class="tag">Función 1 · Modelación</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="estudios">
+              <span class="activity-index">06</span>
+              <div>
+                <h3>Realizar estudios de calidad</h3>
+                <p>Identificar desviaciones según las normas aplicables y proponer soluciones bajo distintas condiciones.</p>
+                <span class="tag">Funciones 2 y 3</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="estudios">
+              <span class="activity-index">07</span>
+              <div>
+                <h3>Verificar integridad de datos</h3>
+                <p>Revisar completitud y calidad de la adquisición: huecos, valores fuera de rango o desincronización.</p>
+                <span class="tag">Función básica · Calidad de datos</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="group" data-group="reportes">
+          <div class="group-title reveal">
+            <h3>Reportes regulatorios y de gestión</h3>
+            <span>CREG · SUI</span>
+          </div>
+          <p class="reveal">Cálculo, construcción y entrega de información a entes internos y externos.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="reportes">
+              <span class="activity-index">08</span>
+              <div>
+                <h3>Elaborar informes de calidad</h3>
+                <p>Reportes en barras NT2, NT3 y NT4, puntos de conexión e instalaciones de usuarios.</p>
+                <span class="tag">Función 4 · Informes</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="reportes">
+              <span class="activity-index">09</span>
+              <div>
+                <h3>Calcular y reportar indicadores a la CREG</h3>
+                <p>Seguimiento y control del comportamiento de la calidad de la onda de tensión de CENS y sus usuarios.</p>
+                <span class="tag">Función 6 · Indicadores CREG</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="reportes">
+              <span class="activity-index">10</span>
+              <div>
+                <h3>Construir formatos SUI</h3>
+                <p>Preparar y reportar formatos relacionados con calidad de la potencia conforme a la normativa vigente.</p>
+                <span class="tag">Función 11 · SUI</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="reportes">
+              <span class="activity-index">11</span>
+              <div>
+                <h3>Atender requerimientos</h3>
+                <p>Responder solicitudes internas o externas con evidencias provenientes de SCADA y del sistema de gestión de medida.</p>
+                <span class="tag">Función 4 · Requerimientos</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="group" data-group="infra">
+          <div class="group-title reveal">
+            <h3>Infraestructura de medida y datos</h3>
+            <span>Equipos · PMS</span>
+          </div>
+          <p class="reveal">Disponibilidad, integración y funcionamiento del sistema de adquisición.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="infra">
+              <span class="activity-index">12</span>
+              <div>
+                <h3>Gestionar disponibilidad de equipos</h3>
+                <p>Coordinar con áreas operativas la medida y comunicación de la infraestructura de calidad de potencia.</p>
+                <span class="tag">Función 5 · Disponibilidad</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="infra">
+              <span class="activity-index">13</span>
+              <div>
+                <h3>Verificar medidores en campo</h3>
+                <p>Validar funcionamiento, conexionado, integración al PMS y captura de información en subestaciones o clientes.</p>
+                <span class="tag">Función 12 · Verificación en campo</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="infra">
+              <span class="activity-index">14</span>
+              <div>
+                <h3>Actualizar software e integrar equipos</h3>
+                <p>Gestionar el software de gestión de medida, integrar nuevos equipos y asegurar la calidad de la información.</p>
+                <span class="tag">Función 10 · Aplicativos</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="infra">
+              <span class="activity-index">15</span>
+              <div>
+                <h3>Solicitar soporte a plataformas</h3>
+                <p>Identificar y comunicar a TI necesidades sobre SCADA, PMS o bases de datos que soportan el proceso.</p>
+                <span class="tag">Función 22 · Soporte SI</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="group" data-group="mejora">
+          <div class="group-title reveal">
+            <h3>Mejora continua y soporte a operación</h3>
+            <span>Indicadores</span>
+          </div>
+          <p class="reveal">Desde el diagnóstico hasta acciones de mejora e información para pérdidas.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="mejora">
+              <span class="activity-index">16</span>
+              <div>
+                <h3>Identificar causas de afectación</h3>
+                <p>Detectar qué está impactando la calidad de la onda de tensión en transmisión y distribución.</p>
+                <span class="tag">Función 7 · Causas</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="mejora">
+              <span class="activity-index">17</span>
+              <div>
+                <h3>Proponer acciones de mejora</h3>
+                <p>Recomendar ajustes operativos, mantenimiento, inversión o mitigación para mejorar indicadores.</p>
+                <span class="tag">Función 8 · Mejoramiento</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="mejora">
+              <span class="activity-index">18</span>
+              <div>
+                <h3>Apoyar balances y flujos de carga</h3>
+                <p>Suministrar información para balances de energía, flujos por circuitos e indicadores de pérdidas.</p>
+                <span class="tag">Función 9 · Pérdidas</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="group" data-group="gestion">
+          <div class="group-title reveal">
+            <h3>Coordinación y cumplimiento</h3>
+            <span>Gestión</span>
+          </div>
+          <p class="reveal">Relaciones internas, trazabilidad y alineación con el Sistema de Gestión Integrado.</p>
+          <ul class="activity-list">
+            <li class="activity" data-cat="gestion">
+              <span class="activity-index">19</span>
+              <div>
+                <h3>Articularse con áreas clave</h3>
+                <p>Coordinación permanente con Distribución, Subestaciones y Líneas, Comercial, Proyectos y TI.</p>
+                <span class="tag">Relaciones del cargo</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="gestion">
+              <span class="activity-index">20</span>
+              <div>
+                <h3>Informar al superior inmediato</h3>
+                <p>Mantener al Jefe de Unidad al tanto de hallazgos, reportes y estado de equipos y datos.</p>
+                <span class="tag">Función 30 · Comunicación</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="gestion">
+              <span class="activity-index">21</span>
+              <div>
+                <h3>Conservar registros técnicos</h3>
+                <p>Organizar y preservar registros físicos y electrónicos de estudios, reportes y verificaciones.</p>
+                <span class="tag">Función 28 · Archivo</span>
+              </div>
+            </li>
+            <li class="activity" data-cat="gestion">
+              <span class="activity-index">22</span>
+              <div>
+                <h3>Aplicar lineamientos SGI y seguridad</h3>
+                <p>Cumplir control interno, SST y seguridad de la información en el manejo de datos SCADA.</p>
+                <span class="tag">Funciones 17 · 18 · 31</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="cierre">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="num">03 · En una frase</p>
+          <h2>Síntesis del rol</h2>
+        </div>
+        <p class="summary reveal">
+          El cargo combina vigilancia con SCADA, estudios de calidad de potencia,
+          integridad del sistema de medida, reportes CREG/SUI y propuestas de mejora
+          para asegurar continuidad, calidad y seguridad del servicio.
+        </p>
+        <p class="meta reveal">
+          Fuente: Descripción de cargos · Profesional P1 Calidad de la Potencia Eléctrica · Versión 11 · CENS S.A. E.S.P.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-brand">
+      <a href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer" aria-label="Ir a cens.com.co">
+        <img src="logo-cens.svg" alt="Logo CENS" width="189" height="83" />
+      </a>
+      <span>Centrales Eléctricas del Norte de Santander S.A. E.S.P. · Unidad Gestión Operativa · <a href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer">www.cens.com.co</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const reveals = document.querySelectorAll(".reveal, .activity");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      reveals.forEach((el, i) => {
+        if (el.classList.contains("activity")) {
+          el.style.transitionDelay = (i % 6) * 45 + "ms";
+        }
+        io.observe(el);
+      });
+
+      // Filters
+      const filters = document.querySelectorAll(".filter");
+      const activities = document.querySelectorAll(".activity");
+      const groups = document.querySelectorAll(".group");
+
+      filters.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filters.forEach((b) => b.classList.remove("is-on"));
+          btn.classList.add("is-on");
+          const key = btn.dataset.filter;
+
+          activities.forEach((item) => {
+            const show = key === "all" || item.dataset.cat === key;
+            item.classList.toggle("is-hidden", !show);
+            if (show) {
+              item.classList.remove("is-visible");
+              void item.offsetWidth;
+              item.classList.add("is-visible");
+            }
+          });
+
+          groups.forEach((g) => {
+            const show = key === "all" || g.dataset.group === key;
+            g.style.display = show ? "" : "none";
+          });
+        });
+      });
+
+      // Active nav
+      const sections = ["mision", "actividades", "cierre"].map((id) =>
+        document.getElementById(id)
+      );
+      const links = document.querySelectorAll(".nav-links a");
+
+      const navIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              links.forEach((a) => {
+                a.classList.toggle(
+                  "is-active",
+                  a.getAttribute("href") === "#" + entry.target.id
+                );
+              });
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -45% 0px", threshold: 0.01 }
+      );
+      sections.forEach((s) => s && navIo.observe(s));
+    })();
+  </script>
+</body>
+</html>
