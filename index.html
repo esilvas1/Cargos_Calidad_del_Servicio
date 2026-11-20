@@ -580,7 +580,7 @@
         <button type="button" class="session-btn" role="tab" aria-selected="false" data-session="bd" id="tab-bd">
           <span class="code">Código 81255</span>
           <span class="name">Gestión Información T&amp;D — Bases de Datos</span>
-          <span class="hint">Indicadores · Continuidad · Reportes regulatorios</span>
+          <span class="hint">Indicadores · Análisis de datos · Reportes regulatorios</span>
         </button>
       </div>
     </div>
@@ -889,8 +889,16 @@
             <p class="num">02 · Alcance operativo</p>
             <h2>Actividades del cargo</h2>
             <p>
-              Inventario práctico enfocado en bases de datos, continuidad del servicio,
-              indicadores y reportes de planes de inversión.
+              Funciones originales del cargo, con una capa de <strong>análisis y calidad de datos</strong>
+              que las ejecuta con mayor profundidad — sin reemplazarlas.
+            </p>
+          </div>
+
+          <div class="mission reveal" style="margin-bottom: 2rem;">
+            <p>
+              Orientación: aplicar análisis y calidad de datos para calcular, asegurar y reportar
+              los indicadores de calidad del servicio y planes de inversión del Sistema T&amp;D,
+              siempre anclado a las funciones 1 a 10 del cargo.
             </p>
           </div>
 
@@ -900,13 +908,14 @@
             <button type="button" class="filter" data-filter="indicadores">Indicadores</button>
             <button type="button" class="filter" data-filter="activos">BD regulatoria de activos</button>
             <button type="button" class="filter" data-filter="desarrollo">Objetos en BD</button>
+            <button type="button" class="filter" data-filter="analisis">Análisis de datos</button>
             <button type="button" class="filter" data-filter="soporte">Soporte e indisponibilidad</button>
             <button type="button" class="filter" data-filter="aseguramiento">Aseguramiento</button>
             <button type="button" class="filter" data-filter="gestion-bd">Coordinación</button>
           </div>
 
           <div class="group" data-group="estructura">
-            <div class="group-title reveal"><h3>Estructura y consultas</h3><span>Bases de datos</span></div>
+            <div class="group-title reveal"><h3>Estructura y consultas</h3><span>Funciones 1 · 2 · 4</span></div>
             <p class="reveal">Diseño de almacenamiento y elaboración de consultas para informes.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="estructura">
@@ -937,7 +946,7 @@
           </div>
 
           <div class="group" data-group="indicadores">
-            <div class="group-title reveal"><h3>Indicadores y reportes</h3><span>Regulatorio</span></div>
+            <div class="group-title reveal"><h3>Indicadores y reportes</h3><span>Función 3 · Regulatorio</span></div>
             <p class="reveal">Cálculo y reporte a entes regulatorios y de vigilancia.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="indicadores">
@@ -960,7 +969,7 @@
           </div>
 
           <div class="group" data-group="activos">
-            <div class="group-title reveal"><h3>Base de datos regulatoria de activos</h3><span>Activos T&amp;D</span></div>
+            <div class="group-title reveal"><h3>Base de datos regulatoria de activos</h3><span>Funciones 5 · 10</span></div>
             <p class="reveal">Actualización y uso de la BD regulatoria para indicadores operativos.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="activos">
@@ -983,7 +992,7 @@
           </div>
 
           <div class="group" data-group="desarrollo">
-            <div class="group-title reveal"><h3>Desarrollo en base de datos</h3><span>Objetos · Procedimientos</span></div>
+            <div class="group-title reveal"><h3>Desarrollo en base de datos</h3><span>Función 6</span></div>
             <p class="reveal">Funciones, métodos y procedimientos almacenados para generar indicadores.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="desarrollo">
@@ -1005,8 +1014,90 @@
             </ul>
           </div>
 
+          <div class="group" data-group="analisis">
+            <div class="group-title reveal"><h3>Cómo implementar con análisis de datos</h3><span>Capa analítica</span></div>
+            <p class="reveal">
+              Prácticas de data analysis que refuerzan las funciones originales; no las sustituyen.
+              Cada ítem indica la función a la que responde.
+            </p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A1</span>
+                <div>
+                  <h3>Modelar y documentar el dato</h3>
+                  <p>Definir diccionario de datos, claves y relaciones de continuidad, calidad del servicio y planes de inversión para que la estructura BD sea trazable y reutilizable.</p>
+                  <span class="tag">Ejecuta · Función 1</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A2</span>
+                <div>
+                  <h3>Consultas analíticas reutilizables</h3>
+                  <p>Diseñar vistas y consultas parametrizadas (series, cortes por circuito/activo, ventanas de tiempo) para informes de continuidad y calidad de la información.</p>
+                  <span class="tag">Ejecuta · Función 2</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A3</span>
+                <div>
+                  <h3>Análisis de indicadores y desviaciones</h3>
+                  <p>Calcular indicadores con series históricas, comparar periodos y detectar desviaciones o valores atípicos antes del reporte a entes regulatorios.</p>
+                  <span class="tag">Ejecuta · Función 3</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A4</span>
+                <div>
+                  <h3>Tablero de seguimiento de la información</h3>
+                  <p>Visualizar estado de carga, completitud y control de bases de datos y sistemas que soportan calidad del servicio y planes de inversión.</p>
+                  <span class="tag">Ejecuta · Función 4</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A5</span>
+                <div>
+                  <h3>Conciliación y reglas de calidad en BD de activos</h3>
+                  <p>Aplicar reglas de validación, conciliación y trazabilidad de cambios sobre la BD regulatoria de activos para indicadores operativos confiables.</p>
+                  <span class="tag">Ejecuta · Función 5</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A6</span>
+                <div>
+                  <h3>Automatizar cálculo y auditoría en BD</h3>
+                  <p>Implementar procedimientos que calculen, validen y dejen evidencia de auditoría de indicadores y reportes de planes de inversión.</p>
+                  <span class="tag">Ejecuta · Función 6</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A7</span>
+                <div>
+                  <h3>Monitoreo de oportunidad de reporte</h3>
+                  <p>Seguir métricas de disponibilidad, retrasos y huecos de datos para escalar a tiempo indisponibilidades que afecten el reporte regulatorio.</p>
+                  <span class="tag">Ejecuta · Función 7</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A8</span>
+                <div>
+                  <h3>Diagnóstico de aseguramiento con evidencia</h3>
+                  <p>Usar perfiles de calidad (nulos, duplicados, fuera de rango) para proponer e implementar acciones de aseguramiento con áreas responsables.</p>
+                  <span class="tag">Ejecuta · Funciones 8 y 9</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="analisis">
+                <span class="activity-index">A9</span>
+                <div>
+                  <h3>Analítica de activos para calidad del servicio</h3>
+                  <p>Cruzar taxonomía EAM, criticidad y fallas con datos de calidad del servicio para enriquecer análisis, integridad y reporte.</p>
+                  <span class="tag">Ejecuta · Función 10</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
           <div class="group" data-group="soporte">
-            <div class="group-title reveal"><h3>Soporte e indisponibilidad</h3><span>Sistemas</span></div>
+            <div class="group-title reveal"><h3>Soporte e indisponibilidad</h3><span>Funciones 7 · 18 · 19</span></div>
             <p class="reveal">Escalamiento ante fallas para no perder oportunidad de reporte.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="soporte">
@@ -1037,7 +1128,7 @@
           </div>
 
           <div class="group" data-group="aseguramiento">
-            <div class="group-title reveal"><h3>Aseguramiento de la información</h3><span>Mejora</span></div>
+            <div class="group-title reveal"><h3>Aseguramiento de la información</h3><span>Funciones 8 · 9</span></div>
             <p class="reveal">Fortalecer reporte, gestión de información e indicadores.</p>
             <ul class="activity-list">
               <li class="activity" data-cat="aseguramiento">
@@ -1107,9 +1198,10 @@
             <h2>Síntesis del rol</h2>
           </div>
           <p class="summary reveal">
-            El cargo estructura y opera la información en bases de datos para calcular
-            indicadores de calidad del servicio y planes de inversión, asegurar reportes
-            regulatorios y fortalecer la gestión de información del Sistema T&amp;D.
+            Cumple las funciones originales de estructura BD, indicadores y reportes T&amp;D,
+            y las potencia con análisis y calidad de datos: modelado, consultas analíticas,
+            detección de desviaciones, conciliación de activos y automatización auditada
+            del cálculo — sin salir del alcance del cargo.
           </p>
           <p class="meta reveal">
             Fuente: Profesional P1 Gestión Información T&amp;D — Bases de Datos · Código 81255 · Versión 11 · CENS S.A. E.S.P.
