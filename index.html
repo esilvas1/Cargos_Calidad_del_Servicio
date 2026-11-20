@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profesional P1 · Calidad de la Potencia Eléctrica</title>
+  <title>CENS · Cargos Unidad Gestión Operativa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,19 +13,16 @@
       --ink-soft: #3a4f5c;
       --muted: #6b7f8c;
       --paper: #f3f6f4;
-      --paper-2: #e7eee9;
       --line: rgba(18, 33, 43, 0.12);
       --accent: #0f7a6c;
       --accent-deep: #0a554b;
       --signal: #c47a1a;
       --glow-soft: rgba(15, 122, 108, 0.14);
-      --radius: 2px;
       --max: 1080px;
       --nav-h: 64px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -62,7 +59,6 @@
       z-index: 1;
     }
 
-    /* Nav */
     .topbar {
       position: sticky;
       top: 0;
@@ -112,37 +108,6 @@
       text-transform: uppercase;
     }
 
-    .hero-brand {
-      margin-bottom: 1.75rem;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: rise 0.8s ease 0.05s forwards;
-    }
-
-    .hero-brand a {
-      display: inline-block;
-    }
-
-    .hero-brand img {
-      height: clamp(52px, 8vw, 72px);
-      width: auto;
-      display: block;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand img {
-      height: 36px;
-      width: auto;
-      display: block;
-      opacity: 0.92;
-    }
-
     .nav-links {
       display: flex;
       gap: 0.35rem;
@@ -165,13 +130,25 @@
       border-color: var(--accent);
     }
 
-    /* Hero */
     .hero {
       min-height: calc(100vh - var(--nav-h));
       display: grid;
       align-content: center;
-      padding: 4rem 0 5rem;
+      padding: 4rem 0 4rem;
       position: relative;
+    }
+
+    .hero-brand {
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.8s ease 0.05s forwards;
+    }
+
+    .hero-brand img {
+      height: clamp(52px, 8vw, 72px);
+      width: auto;
+      display: block;
     }
 
     .hero-kicker {
@@ -189,10 +166,10 @@
 
     .hero h1 {
       font-family: "Fraunces", serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
       line-height: 1.05;
       letter-spacing: -0.03em;
-      max-width: 14ch;
+      max-width: 16ch;
       margin-bottom: 1.25rem;
       opacity: 0;
       transform: translateY(22px);
@@ -229,28 +206,13 @@
       border: 1px solid transparent;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      font-family: inherit;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-deep);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border-color: var(--line);
-      color: var(--ink);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent-deep);
-    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-deep); }
 
     .wave {
       position: absolute;
@@ -273,21 +235,75 @@
       animation: draw 2.4s ease 0.6s forwards;
     }
 
-    .wave path:nth-child(2) {
-      stroke: var(--signal);
-      opacity: 0.35;
-      animation-delay: 0.9s;
+    .wave path:nth-child(2) { stroke: var(--signal); opacity: 0.35; animation-delay: 0.9s; }
+    .wave path:nth-child(3) { stroke: var(--ink); opacity: 0.18; animation-delay: 1.15s; }
+
+    /* Session switcher */
+    .sessions {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 0;
+      position: relative;
+      z-index: 1;
     }
 
-    .wave path:nth-child(3) {
-      stroke: var(--ink);
-      opacity: 0.18;
-      animation-delay: 1.15s;
+    .session-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0;
     }
 
-    /* Sections */
-    section {
-      padding: 4.5rem 0;
+    .session-btn {
+      text-align: left;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--ink);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .session-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .session-btn.is-on {
+      background: linear-gradient(135deg, rgba(15, 122, 108, 0.12), rgba(196, 122, 26, 0.06));
+      border-color: var(--accent);
+    }
+
+    .session-btn .code {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .session-btn .name {
+      font-family: "Fraunces", serif;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .session-btn .hint {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .session-panel { display: none; }
+    .session-panel.is-on { display: block; }
+
+    section.block {
+      padding: 4rem 0;
       border-top: 1px solid var(--line);
     }
 
@@ -295,7 +311,7 @@
       display: grid;
       gap: 0.75rem;
       margin-bottom: 2.25rem;
-      max-width: 40rem;
+      max-width: 42rem;
     }
 
     .section-head .num {
@@ -318,7 +334,6 @@
       font-weight: 300;
     }
 
-    /* Mission band */
     .mission {
       background: linear-gradient(135deg, rgba(15, 122, 108, 0.08), rgba(196, 122, 26, 0.06));
       border: 1px solid var(--line);
@@ -340,10 +355,8 @@
     .mission p {
       font-size: 1.05rem;
       max-width: 52rem;
-      color: var(--ink);
     }
 
-    /* Filter chips - interaction containers */
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -361,7 +374,7 @@
       font-weight: 500;
       padding: 0.55rem 0.9rem;
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
     .filter:hover { border-color: var(--accent); color: var(--accent-deep); }
@@ -371,12 +384,7 @@
       color: #fff;
     }
 
-    /* Activity list */
-    .activity-list {
-      list-style: none;
-      display: grid;
-      gap: 0;
-    }
+    .activity-list { list-style: none; display: grid; gap: 0; }
 
     .activity {
       display: grid;
@@ -389,18 +397,9 @@
       transition: opacity 0.55s ease, transform 0.55s ease, background 0.25s ease;
     }
 
-    .activity.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .activity.is-hidden {
-      display: none;
-    }
-
-    .activity:hover {
-      background: linear-gradient(90deg, var(--glow-soft), transparent 70%);
-    }
+    .activity.is-visible { opacity: 1; transform: translateY(0); }
+    .activity.is-hidden { display: none; }
+    .activity:hover { background: linear-gradient(90deg, var(--glow-soft), transparent 70%); }
 
     .activity-index {
       font-family: "Fraunces", serif;
@@ -435,10 +434,7 @@
       padding-left: 0.45rem;
     }
 
-    /* Group blocks */
-    .group {
-      margin-bottom: 3rem;
-    }
+    .group { margin-bottom: 3rem; }
 
     .group-title {
       display: flex;
@@ -467,17 +463,13 @@
       max-width: 40rem;
     }
 
-    /* Closing */
-    .closing {
-      text-align: left;
-      padding-bottom: 5rem;
-    }
+    .closing { padding-bottom: 5rem; }
 
     .closing .summary {
       font-family: "Fraunces", serif;
       font-size: clamp(1.35rem, 2.8vw, 1.85rem);
       line-height: 1.35;
-      max-width: 36rem;
+      max-width: 38rem;
       letter-spacing: -0.02em;
     }
 
@@ -485,6 +477,31 @@
       margin-top: 1.5rem;
       font-size: 0.8rem;
       color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img {
+      height: 36px;
+      width: auto;
+      display: block;
+      opacity: 0.92;
     }
 
     footer {
@@ -496,13 +513,8 @@
       z-index: 1;
     }
 
-    @keyframes rise {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes draw {
-      to { stroke-dashoffset: 0; }
-    }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
 
     @media (max-width: 720px) {
       .nav-links { display: none; }
@@ -511,6 +523,7 @@
       .wrap { width: min(100% - 1.5rem, var(--max)); }
       .brand-copy { display: none; }
       .brand-mark img { height: 36px; }
+      .session-switch { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -520,11 +533,12 @@
       <a class="brand-mark" href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer" aria-label="CENS — sitio oficial">
         <img src="logo-cens.svg" alt="Logo CENS Grupo EPM" width="189" height="83" />
         <div class="brand-copy">
-          <strong>Calidad de la Potencia</strong>
-          <span>Unidad Gestión Operativa</span>
+          <strong>Gestión Operativa</strong>
+          <span>Cargos Profesional P1</span>
         </div>
       </a>
       <nav class="nav-links" aria-label="Secciones">
+        <a href="#cargos">Cargos</a>
         <a href="#mision">Misión</a>
         <a href="#actividades">Actividades</a>
         <a href="#cierre">Síntesis</a>
@@ -533,22 +547,21 @@
   </header>
 
   <main>
-    <section class="hero wrap" id="inicio" aria-label="Presentación del cargo">
+    <section class="hero wrap" id="inicio" aria-label="Presentación">
       <div class="hero-brand">
         <a href="https://www.cens.com.co" target="_blank" rel="noopener noreferrer">
           <img src="logo-cens.svg" alt="Centrales Eléctricas del Norte de Santander — CENS Grupo EPM" width="189" height="83" />
         </a>
       </div>
-      <p class="hero-kicker">Profesional P1 · Código 81173</p>
-      <h1>Calidad de la Potencia Eléctrica</h1>
+      <p class="hero-kicker">Unidad Gestión Operativa · Profesional P1</p>
+      <h1>Gestión Operativa y Calidad de la Potencia Eléctrica</h1>
       <p class="lead">
-        Actividades del cargo apoyadas en datos SCADA, alineadas con el análisis,
-        integridad, cálculo y reporte de la calidad de la potencia en el Sistema
-        de Transmisión y Distribución.
+        Desglose de actividades para Calidad de la Potencia Eléctrica y Gestión
+        de Información T&amp;D — Bases de Datos, alineado a las descripciones oficiales de cargo.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#actividades">Ver actividades</a>
-        <a class="btn btn-ghost" href="#mision">Función básica</a>
+        <a class="btn btn-primary" href="#cargos">Elegir cargo</a>
+        <a class="btn btn-ghost" href="#actividades">Ver actividades</a>
       </div>
       <svg class="wave" viewBox="0 0 420 180" aria-hidden="true">
         <path d="M10 90 C 60 20, 100 160, 150 90 S 240 20, 290 90 S 380 160, 410 90" />
@@ -557,300 +570,553 @@
       </svg>
     </section>
 
-    <section id="mision">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="num">01 · Función básica</p>
-          <h2>Para qué existe el cargo</h2>
-          <p>Marco orientador según la descripción oficial del puesto.</p>
+    <div class="sessions wrap" id="cargos">
+      <div class="session-switch" role="tablist" aria-label="Seleccionar cargo">
+        <button type="button" class="session-btn is-on" role="tab" aria-selected="true" data-session="cp" id="tab-cp">
+          <span class="code">Código 81173</span>
+          <span class="name">Calidad de la Potencia Eléctrica</span>
+          <span class="hint">SCADA · Medida PQ · CREG / SUI</span>
+        </button>
+        <button type="button" class="session-btn" role="tab" aria-selected="false" data-session="bd" id="tab-bd">
+          <span class="code">Código 81255</span>
+          <span class="name">Gestión Información T&amp;D — Bases de Datos</span>
+          <span class="hint">Indicadores · Continuidad · Reportes regulatorios</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== SESIÓN: CALIDAD DE LA POTENCIA ========== -->
+    <div class="session-panel is-on" id="panel-cp" role="tabpanel" aria-labelledby="tab-cp" data-session="cp">
+      <section class="block" id="mision">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">01 · Función básica</p>
+            <h2>Calidad de la Potencia Eléctrica</h2>
+            <p>Marco orientador según la descripción oficial del puesto.</p>
+          </div>
+          <div class="mission reveal">
+            <p>
+              Ejecutar actividades asociadas al análisis, integridad, cálculo y reporte
+              de la información de Calidad de la Potencia Eléctrica del Sistema de
+              Transmisión y Distribución, aplicando la normatividad vigente, con el fin
+              de lograr la continuidad, calidad y seguridad en la prestación del servicio
+              de energía eléctrica y contribuir al logro de los objetivos empresariales.
+            </p>
+          </div>
         </div>
-        <div class="mission reveal">
-          <p>
-            Ejecutar actividades asociadas al análisis, integridad, cálculo y reporte
-            de la información de Calidad de la Potencia Eléctrica del Sistema de
-            Transmisión y Distribución, aplicando la normatividad vigente, con el fin
-            de lograr la continuidad, calidad y seguridad en la prestación del servicio
-            de energía eléctrica y contribuir al logro de los objetivos empresariales.
+      </section>
+
+      <section class="block" id="actividades">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">02 · Alcance operativo</p>
+            <h2>Actividades del cargo</h2>
+            <p>Inventario práctico con énfasis en datos SCADA y funciones principales.</p>
+          </div>
+
+          <div class="filters reveal" role="group" aria-label="Filtrar actividades CP">
+            <button type="button" class="filter is-on" data-filter="all">Todas</button>
+            <button type="button" class="filter" data-filter="scada">SCADA y monitoreo</button>
+            <button type="button" class="filter" data-filter="estudios">Estudios</button>
+            <button type="button" class="filter" data-filter="reportes">Reportes</button>
+            <button type="button" class="filter" data-filter="infra">Infraestructura de medida</button>
+            <button type="button" class="filter" data-filter="mejora">Mejora y operación</button>
+            <button type="button" class="filter" data-filter="gestion">Coordinación</button>
+          </div>
+
+          <div class="group" data-group="scada">
+            <div class="group-title reveal"><h3>Monitoreo y análisis operativo</h3><span>SCADA</span></div>
+            <p class="reveal">Vigilancia continua de la red con señales de supervisión y control.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="scada">
+                <span class="activity-index">01</span>
+                <div>
+                  <h3>Revisar tendencias operativas</h3>
+                  <p>Seguimiento de tensión, corriente, potencia, factor de potencia y eventos en barras y alimentadores.</p>
+                  <span class="tag">Función 3 · Análisis de parámetros</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="scada">
+                <span class="activity-index">02</span>
+                <div>
+                  <h3>Contrastar SCADA con medidores PQ</h3>
+                  <p>Validar coherencia entre señales SCADA y registros de calidad de potencia.</p>
+                  <span class="tag">Función básica · Integridad de datos</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="scada">
+                <span class="activity-index">03</span>
+                <div>
+                  <h3>Detectar comportamientos atípicos</h3>
+                  <p>Identificar sags, swells, desbalances, sobrecargas u oscilaciones y documentar hallazgos.</p>
+                  <span class="tag">Función 7 · Identificación de causas</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="scada">
+                <span class="activity-index">04</span>
+                <div>
+                  <h3>Analizar cargabilidad de activos</h3>
+                  <p>Evaluar transformadores y alimentadores e identificar condiciones atípicas.</p>
+                  <span class="tag">Función 13 · Cargabilidad</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="estudios">
+            <div class="group-title reveal"><h3>Estudios e integridad</h3><span>Análisis técnico</span></div>
+            <p class="reveal">Modelación, estudios normativos y control de calidad de datos.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="estudios">
+                <span class="activity-index">05</span>
+                <div>
+                  <h3>Modelar sistemas eléctricos</h3>
+                  <p>Representar tramos o subestaciones para estudiar perturbaciones de calidad de potencia.</p>
+                  <span class="tag">Función 1 · Modelación</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="estudios">
+                <span class="activity-index">06</span>
+                <div>
+                  <h3>Realizar estudios de calidad</h3>
+                  <p>Identificar desviaciones según normas aplicables y proponer soluciones.</p>
+                  <span class="tag">Funciones 2 y 3</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="estudios">
+                <span class="activity-index">07</span>
+                <div>
+                  <h3>Verificar integridad de datos</h3>
+                  <p>Revisar huecos, valores fuera de rango o desincronización en la adquisición.</p>
+                  <span class="tag">Función básica · Calidad de datos</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="reportes">
+            <div class="group-title reveal"><h3>Reportes regulatorios</h3><span>CREG · SUI</span></div>
+            <p class="reveal">Cálculo, construcción y entrega de información a entes internos y externos.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="reportes">
+                <span class="activity-index">08</span>
+                <div>
+                  <h3>Elaborar informes de calidad</h3>
+                  <p>Reportes en barras NT2, NT3 y NT4, puntos de conexión e instalaciones de usuarios.</p>
+                  <span class="tag">Función 4 · Informes</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="reportes">
+                <span class="activity-index">09</span>
+                <div>
+                  <h3>Calcular y reportar indicadores a la CREG</h3>
+                  <p>Seguimiento del comportamiento de la calidad de la onda de tensión.</p>
+                  <span class="tag">Función 6 · Indicadores CREG</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="reportes">
+                <span class="activity-index">10</span>
+                <div>
+                  <h3>Construir formatos SUI</h3>
+                  <p>Preparar y reportar formatos de calidad de la potencia conforme a la normativa.</p>
+                  <span class="tag">Función 11 · SUI</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="reportes">
+                <span class="activity-index">11</span>
+                <div>
+                  <h3>Atender requerimientos</h3>
+                  <p>Responder solicitudes con evidencias de SCADA y del sistema de gestión de medida.</p>
+                  <span class="tag">Función 4 · Requerimientos</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="infra">
+            <div class="group-title reveal"><h3>Infraestructura de medida</h3><span>Equipos · PMS</span></div>
+            <p class="reveal">Disponibilidad, integración y funcionamiento del sistema de adquisición.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="infra">
+                <span class="activity-index">12</span>
+                <div>
+                  <h3>Gestionar disponibilidad de equipos</h3>
+                  <p>Coordinar medida y comunicación de la infraestructura de calidad de potencia.</p>
+                  <span class="tag">Función 5 · Disponibilidad</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="infra">
+                <span class="activity-index">13</span>
+                <div>
+                  <h3>Verificar medidores en campo</h3>
+                  <p>Validar conexionado, integración al PMS y captura de información.</p>
+                  <span class="tag">Función 12 · Verificación en campo</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="infra">
+                <span class="activity-index">14</span>
+                <div>
+                  <h3>Actualizar software e integrar equipos</h3>
+                  <p>Gestionar el software de medida e integrar nuevos equipos.</p>
+                  <span class="tag">Función 10 · Aplicativos</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="infra">
+                <span class="activity-index">15</span>
+                <div>
+                  <h3>Solicitar soporte a plataformas</h3>
+                  <p>Comunicar a TI necesidades sobre SCADA, PMS o bases de datos.</p>
+                  <span class="tag">Función 22 · Soporte SI</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="mejora">
+            <div class="group-title reveal"><h3>Mejora y soporte a operación</h3><span>Indicadores</span></div>
+            <p class="reveal">Desde el diagnóstico hasta acciones de mejora e información para pérdidas.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="mejora">
+                <span class="activity-index">16</span>
+                <div>
+                  <h3>Identificar causas de afectación</h3>
+                  <p>Detectar qué impacta la calidad de la onda en transmisión y distribución.</p>
+                  <span class="tag">Función 7 · Causas</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="mejora">
+                <span class="activity-index">17</span>
+                <div>
+                  <h3>Proponer acciones de mejora</h3>
+                  <p>Recomendar ajustes operativos, mantenimiento, inversión o mitigación.</p>
+                  <span class="tag">Función 8 · Mejoramiento</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="mejora">
+                <span class="activity-index">18</span>
+                <div>
+                  <h3>Apoyar balances y flujos de carga</h3>
+                  <p>Suministrar información para balances, flujos por circuitos e indicadores de pérdidas.</p>
+                  <span class="tag">Función 9 · Pérdidas</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="gestion">
+            <div class="group-title reveal"><h3>Coordinación y cumplimiento</h3><span>Gestión</span></div>
+            <p class="reveal">Relaciones internas, trazabilidad y alineación con el SGI.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="gestion">
+                <span class="activity-index">19</span>
+                <div>
+                  <h3>Articularse con áreas clave</h3>
+                  <p>Coordinación con Distribución, Subestaciones y Líneas, Comercial, Proyectos y TI.</p>
+                  <span class="tag">Relaciones del cargo</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion">
+                <span class="activity-index">20</span>
+                <div>
+                  <h3>Informar al superior inmediato</h3>
+                  <p>Mantener al Jefe de Unidad al tanto de hallazgos, reportes y estado de datos.</p>
+                  <span class="tag">Función 30 · Comunicación</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion">
+                <span class="activity-index">21</span>
+                <div>
+                  <h3>Conservar registros técnicos</h3>
+                  <p>Organizar y preservar registros de estudios, reportes y verificaciones.</p>
+                  <span class="tag">Función 28 · Archivo</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion">
+                <span class="activity-index">22</span>
+                <div>
+                  <h3>Aplicar lineamientos SGI y seguridad</h3>
+                  <p>Cumplir control interno, SST y seguridad de la información en datos SCADA.</p>
+                  <span class="tag">Funciones 17 · 18 · 31</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block closing" id="cierre">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">03 · En una frase</p>
+            <h2>Síntesis del rol</h2>
+          </div>
+          <p class="summary reveal">
+            Combina vigilancia con SCADA, estudios de calidad de potencia, integridad del
+            sistema de medida, reportes CREG/SUI y propuestas de mejora para asegurar
+            continuidad, calidad y seguridad del servicio.
+          </p>
+          <p class="meta reveal">
+            Fuente: Profesional P1 Calidad de la Potencia Eléctrica · Código 81173 · Versión 11 · CENS S.A. E.S.P.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section id="actividades">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="num">02 · Alcance operativo</p>
-          <h2>Actividades que se pueden realizar</h2>
-          <p>
-            Inventario práctico del día a día, con énfasis en el uso de datos SCADA
-            y en las funciones principales del cargo.
+    <!-- ========== SESIÓN: GESTIÓN INFORMACIÓN T&D ========== -->
+    <div class="session-panel" id="panel-bd" role="tabpanel" aria-labelledby="tab-bd" data-session="bd" hidden>
+      <section class="block" id="mision-bd">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">01 · Función básica</p>
+            <h2>Gestión Información T&amp;D — Bases de Datos</h2>
+            <p>Marco orientador según la descripción oficial del puesto.</p>
+          </div>
+          <div class="mission reveal">
+            <p>
+              Ejecutar actividades asociadas al análisis, integridad, cálculo y reporte
+              de la información de calidad del servicio y planes de inversión del Sistema
+              de Transmisión y Distribución, aplicando la normatividad vigente, con el fin
+              de lograr la continuidad, calidad y seguridad en la prestación del servicio
+              de energía eléctrica y contribuir al logro de los objetivos empresariales.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="actividades-bd">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">02 · Alcance operativo</p>
+            <h2>Actividades del cargo</h2>
+            <p>
+              Inventario práctico enfocado en bases de datos, continuidad del servicio,
+              indicadores y reportes de planes de inversión.
+            </p>
+          </div>
+
+          <div class="filters reveal" role="group" aria-label="Filtrar actividades BD">
+            <button type="button" class="filter is-on" data-filter="all">Todas</button>
+            <button type="button" class="filter" data-filter="estructura">Estructura y consultas</button>
+            <button type="button" class="filter" data-filter="indicadores">Indicadores</button>
+            <button type="button" class="filter" data-filter="activos">BD regulatoria de activos</button>
+            <button type="button" class="filter" data-filter="desarrollo">Objetos en BD</button>
+            <button type="button" class="filter" data-filter="soporte">Soporte e indisponibilidad</button>
+            <button type="button" class="filter" data-filter="aseguramiento">Aseguramiento</button>
+            <button type="button" class="filter" data-filter="gestion-bd">Coordinación</button>
+          </div>
+
+          <div class="group" data-group="estructura">
+            <div class="group-title reveal"><h3>Estructura y consultas</h3><span>Bases de datos</span></div>
+            <p class="reveal">Diseño de almacenamiento y elaboración de consultas para informes.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="estructura">
+                <span class="activity-index">01</span>
+                <div>
+                  <h3>Estructurar la base de datos</h3>
+                  <p>Definir y mantener la estructura para almacenar información e informes de continuidad del servicio y planes de inversión.</p>
+                  <span class="tag">Función 1 · Estructura BD</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="estructura">
+                <span class="activity-index">02</span>
+                <div>
+                  <h3>Elaborar consultas para informes</h3>
+                  <p>Construir consultas de continuidad del servicio y calidad de la información del Sistema T&amp;D.</p>
+                  <span class="tag">Función 2 · Consultas</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="estructura">
+                <span class="activity-index">03</span>
+                <div>
+                  <h3>Presentar seguimiento de información</h3>
+                  <p>Informar el estado y control de la información en bases de datos y sistemas que soportan calidad del servicio y planes de inversión.</p>
+                  <span class="tag">Función 4 · Seguimiento</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="indicadores">
+            <div class="group-title reveal"><h3>Indicadores y reportes</h3><span>Regulatorio</span></div>
+            <p class="reveal">Cálculo y reporte a entes regulatorios y de vigilancia.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="indicadores">
+                <span class="activity-index">04</span>
+                <div>
+                  <h3>Calcular indicadores de calidad del servicio</h3>
+                  <p>Calcular indicadores de calidad del servicio y planes de inversión para reporte a entes regulatorios y de control.</p>
+                  <span class="tag">Función 3 · Indicadores</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="indicadores">
+                <span class="activity-index">05</span>
+                <div>
+                  <h3>Reportar a organismos de control</h3>
+                  <p>Entregar información a CREG, SSPD, XM y demás grupos de interés en los términos de ley.</p>
+                  <span class="tag">Función 22 · Vigilancia y control</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="activos">
+            <div class="group-title reveal"><h3>Base de datos regulatoria de activos</h3><span>Activos T&amp;D</span></div>
+            <p class="reveal">Actualización y uso de la BD regulatoria para indicadores operativos.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="activos">
+                <span class="activity-index">06</span>
+                <div>
+                  <h3>Mantener actualizada la BD regulatoria</h3>
+                  <p>Actualizar la información de activos para elaborar reportes de indicadores operativos del sistema.</p>
+                  <span class="tag">Función 5 · BD regulatoria</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="activos">
+                <span class="activity-index">07</span>
+                <div>
+                  <h3>Aplicar metodologías de gestión de activos</h3>
+                  <p>Implementar directrices EAM en análisis, integridad, cálculo y reporte de calidad del servicio.</p>
+                  <span class="tag">Función 10 · Gestión de activos</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="desarrollo">
+            <div class="group-title reveal"><h3>Desarrollo en base de datos</h3><span>Objetos · Procedimientos</span></div>
+            <p class="reveal">Funciones, métodos y procedimientos almacenados para generar indicadores.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="desarrollo">
+                <span class="activity-index">08</span>
+                <div>
+                  <h3>Desarrollar objetos en base de datos</h3>
+                  <p>Crear funciones, métodos, procedimientos almacenados y objetos que generen indicadores y reportes de planes de inversión.</p>
+                  <span class="tag">Función 6 · Objetos BD</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="desarrollo">
+                <span class="activity-index">09</span>
+                <div>
+                  <h3>Asegurar calidad de datos</h3>
+                  <p>Validar integridad, completitud y consistencia de los datos usados en indicadores y reportes.</p>
+                  <span class="tag">Conocimiento · Calidad de datos</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="soporte">
+            <div class="group-title reveal"><h3>Soporte e indisponibilidad</h3><span>Sistemas</span></div>
+            <p class="reveal">Escalamiento ante fallas para no perder oportunidad de reporte.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="soporte">
+                <span class="activity-index">10</span>
+                <div>
+                  <h3>Escalar indisponibilidad de sistemas</h3>
+                  <p>Reportar requerimientos informáticos por indisponibilidad de sistemas y bases de datos.</p>
+                  <span class="tag">Función 7 · Escalamiento</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="soporte">
+                <span class="activity-index">11</span>
+                <div>
+                  <h3>Comunicar necesidades de soporte</h3>
+                  <p>Identificar y comunicar a TI necesidades de los sistemas de información del proceso.</p>
+                  <span class="tag">Función 19 · Soporte SI</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="soporte">
+                <span class="activity-index">12</span>
+                <div>
+                  <h3>Apoyar la plataforma tecnológica</h3>
+                  <p>Participar en implantación, estabilización, calidad y seguridad de la plataforma que soporta el proceso.</p>
+                  <span class="tag">Función 18 · Plataforma</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="aseguramiento">
+            <div class="group-title reveal"><h3>Aseguramiento de la información</h3><span>Mejora</span></div>
+            <p class="reveal">Fortalecer reporte, gestión de información e indicadores.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="aseguramiento">
+                <span class="activity-index">13</span>
+                <div>
+                  <h3>Proponer acciones de aseguramiento</h3>
+                  <p>Identificar y proponer acciones para fortalecer el aseguramiento, reporte y gestión de información de calidad del servicio y planes de inversión.</p>
+                  <span class="tag">Función 8 · Aseguramiento</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="aseguramiento">
+                <span class="activity-index">14</span>
+                <div>
+                  <h3>Gestionar implementación con áreas</h3>
+                  <p>Coordinar con dependencias responsables la implementación de acciones de aseguramiento e indicadores.</p>
+                  <span class="tag">Función 9 · Implementación</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="group" data-group="gestion-bd">
+            <div class="group-title reveal"><h3>Coordinación y cumplimiento</h3><span>Gestión</span></div>
+            <p class="reveal">Relaciones internas/externas, trazabilidad y alineación SGI.</p>
+            <ul class="activity-list">
+              <li class="activity" data-cat="gestion-bd">
+                <span class="activity-index">15</span>
+                <div>
+                  <h3>Articularse con áreas y entes</h3>
+                  <p>Coordinar con Comercial y TI de forma permanente; con Distribución, Subestaciones, Proyectos, Auditoría, CREG, SSPD, XM y filiales según necesidad.</p>
+                  <span class="tag">Relaciones del cargo</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion-bd">
+                <span class="activity-index">16</span>
+                <div>
+                  <h3>Gestionar datos personales</h3>
+                  <p>Cumplir actividades de protección de datos personales sobre las bases de datos a cargo.</p>
+                  <span class="tag">Función 21 · Datos personales</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion-bd">
+                <span class="activity-index">17</span>
+                <div>
+                  <h3>Informar al superior inmediato</h3>
+                  <p>Mantener al Jefe de Unidad al tanto del estado de reportes, BD e indicadores.</p>
+                  <span class="tag">Función 27 · Comunicación</span>
+                </div>
+              </li>
+              <li class="activity" data-cat="gestion-bd">
+                <span class="activity-index">18</span>
+                <div>
+                  <h3>Conservar registros y aplicar SGI</h3>
+                  <p>Organizar registros, ejercer autocontrol y cumplir lineamientos SGI, SST y seguridad de la información.</p>
+                  <span class="tag">Funciones 14 · 15 · 25 · 28</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block closing" id="cierre-bd">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="num">03 · En una frase</p>
+            <h2>Síntesis del rol</h2>
+          </div>
+          <p class="summary reveal">
+            El cargo estructura y opera la información en bases de datos para calcular
+            indicadores de calidad del servicio y planes de inversión, asegurar reportes
+            regulatorios y fortalecer la gestión de información del Sistema T&amp;D.
+          </p>
+          <p class="meta reveal">
+            Fuente: Profesional P1 Gestión Información T&amp;D — Bases de Datos · Código 81255 · Versión 11 · CENS S.A. E.S.P.
           </p>
         </div>
-
-        <div class="filters reveal" role="group" aria-label="Filtrar por tipo de actividad">
-          <button type="button" class="filter is-on" data-filter="all">Todas</button>
-          <button type="button" class="filter" data-filter="scada">SCADA y monitoreo</button>
-          <button type="button" class="filter" data-filter="estudios">Estudios</button>
-          <button type="button" class="filter" data-filter="reportes">Reportes</button>
-          <button type="button" class="filter" data-filter="infra">Infraestructura de medida</button>
-          <button type="button" class="filter" data-filter="mejora">Mejora y operación</button>
-          <button type="button" class="filter" data-filter="gestion">Coordinación</button>
-        </div>
-
-        <div class="group" data-group="scada">
-          <div class="group-title reveal">
-            <h3>Monitoreo y análisis operativo</h3>
-            <span>SCADA</span>
-          </div>
-          <p class="reveal">Vigilancia continua de la red con señales de supervisión y control.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="scada">
-              <span class="activity-index">01</span>
-              <div>
-                <h3>Revisar tendencias operativas</h3>
-                <p>Seguimiento rutinario de tensión, corriente, potencia, factor de potencia y eventos en barras y alimentadores.</p>
-                <span class="tag">Función 3 · Análisis de parámetros</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="scada">
-              <span class="activity-index">02</span>
-              <div>
-                <h3>Contrastar SCADA con medidores PQ</h3>
-                <p>Validar coherencia entre señales SCADA y registros de calidad de potencia para asegurar integridad de la información.</p>
-                <span class="tag">Función básica · Integridad de datos</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="scada">
-              <span class="activity-index">03</span>
-              <div>
-                <h3>Detectar comportamientos atípicos</h3>
-                <p>Identificar sags, swells, desbalances, sobrecargas u oscilaciones y documentar hallazgos para análisis posterior.</p>
-                <span class="tag">Función 7 · Identificación de causas</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="scada">
-              <span class="activity-index">04</span>
-              <div>
-                <h3>Analizar cargabilidad de activos</h3>
-                <p>Evaluar transformadores y alimentadores e identificar condiciones que impacten el funcionamiento normal de la infraestructura.</p>
-                <span class="tag">Función 13 · Cargabilidad</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="group" data-group="estudios">
-          <div class="group-title reveal">
-            <h3>Estudios e integridad de información</h3>
-            <span>Análisis técnico</span>
-          </div>
-          <p class="reveal">Modelación, estudios normativos y control de calidad de datos.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="estudios">
-              <span class="activity-index">05</span>
-              <div>
-                <h3>Modelar sistemas eléctricos</h3>
-                <p>Representar tramos o subestaciones para estudiar perturbaciones que afectan la calidad de la potencia.</p>
-                <span class="tag">Función 1 · Modelación</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="estudios">
-              <span class="activity-index">06</span>
-              <div>
-                <h3>Realizar estudios de calidad</h3>
-                <p>Identificar desviaciones según las normas aplicables y proponer soluciones bajo distintas condiciones.</p>
-                <span class="tag">Funciones 2 y 3</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="estudios">
-              <span class="activity-index">07</span>
-              <div>
-                <h3>Verificar integridad de datos</h3>
-                <p>Revisar completitud y calidad de la adquisición: huecos, valores fuera de rango o desincronización.</p>
-                <span class="tag">Función básica · Calidad de datos</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="group" data-group="reportes">
-          <div class="group-title reveal">
-            <h3>Reportes regulatorios y de gestión</h3>
-            <span>CREG · SUI</span>
-          </div>
-          <p class="reveal">Cálculo, construcción y entrega de información a entes internos y externos.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="reportes">
-              <span class="activity-index">08</span>
-              <div>
-                <h3>Elaborar informes de calidad</h3>
-                <p>Reportes en barras NT2, NT3 y NT4, puntos de conexión e instalaciones de usuarios.</p>
-                <span class="tag">Función 4 · Informes</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="reportes">
-              <span class="activity-index">09</span>
-              <div>
-                <h3>Calcular y reportar indicadores a la CREG</h3>
-                <p>Seguimiento y control del comportamiento de la calidad de la onda de tensión de CENS y sus usuarios.</p>
-                <span class="tag">Función 6 · Indicadores CREG</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="reportes">
-              <span class="activity-index">10</span>
-              <div>
-                <h3>Construir formatos SUI</h3>
-                <p>Preparar y reportar formatos relacionados con calidad de la potencia conforme a la normativa vigente.</p>
-                <span class="tag">Función 11 · SUI</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="reportes">
-              <span class="activity-index">11</span>
-              <div>
-                <h3>Atender requerimientos</h3>
-                <p>Responder solicitudes internas o externas con evidencias provenientes de SCADA y del sistema de gestión de medida.</p>
-                <span class="tag">Función 4 · Requerimientos</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="group" data-group="infra">
-          <div class="group-title reveal">
-            <h3>Infraestructura de medida y datos</h3>
-            <span>Equipos · PMS</span>
-          </div>
-          <p class="reveal">Disponibilidad, integración y funcionamiento del sistema de adquisición.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="infra">
-              <span class="activity-index">12</span>
-              <div>
-                <h3>Gestionar disponibilidad de equipos</h3>
-                <p>Coordinar con áreas operativas la medida y comunicación de la infraestructura de calidad de potencia.</p>
-                <span class="tag">Función 5 · Disponibilidad</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="infra">
-              <span class="activity-index">13</span>
-              <div>
-                <h3>Verificar medidores en campo</h3>
-                <p>Validar funcionamiento, conexionado, integración al PMS y captura de información en subestaciones o clientes.</p>
-                <span class="tag">Función 12 · Verificación en campo</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="infra">
-              <span class="activity-index">14</span>
-              <div>
-                <h3>Actualizar software e integrar equipos</h3>
-                <p>Gestionar el software de gestión de medida, integrar nuevos equipos y asegurar la calidad de la información.</p>
-                <span class="tag">Función 10 · Aplicativos</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="infra">
-              <span class="activity-index">15</span>
-              <div>
-                <h3>Solicitar soporte a plataformas</h3>
-                <p>Identificar y comunicar a TI necesidades sobre SCADA, PMS o bases de datos que soportan el proceso.</p>
-                <span class="tag">Función 22 · Soporte SI</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="group" data-group="mejora">
-          <div class="group-title reveal">
-            <h3>Mejora continua y soporte a operación</h3>
-            <span>Indicadores</span>
-          </div>
-          <p class="reveal">Desde el diagnóstico hasta acciones de mejora e información para pérdidas.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="mejora">
-              <span class="activity-index">16</span>
-              <div>
-                <h3>Identificar causas de afectación</h3>
-                <p>Detectar qué está impactando la calidad de la onda de tensión en transmisión y distribución.</p>
-                <span class="tag">Función 7 · Causas</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="mejora">
-              <span class="activity-index">17</span>
-              <div>
-                <h3>Proponer acciones de mejora</h3>
-                <p>Recomendar ajustes operativos, mantenimiento, inversión o mitigación para mejorar indicadores.</p>
-                <span class="tag">Función 8 · Mejoramiento</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="mejora">
-              <span class="activity-index">18</span>
-              <div>
-                <h3>Apoyar balances y flujos de carga</h3>
-                <p>Suministrar información para balances de energía, flujos por circuitos e indicadores de pérdidas.</p>
-                <span class="tag">Función 9 · Pérdidas</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="group" data-group="gestion">
-          <div class="group-title reveal">
-            <h3>Coordinación y cumplimiento</h3>
-            <span>Gestión</span>
-          </div>
-          <p class="reveal">Relaciones internas, trazabilidad y alineación con el Sistema de Gestión Integrado.</p>
-          <ul class="activity-list">
-            <li class="activity" data-cat="gestion">
-              <span class="activity-index">19</span>
-              <div>
-                <h3>Articularse con áreas clave</h3>
-                <p>Coordinación permanente con Distribución, Subestaciones y Líneas, Comercial, Proyectos y TI.</p>
-                <span class="tag">Relaciones del cargo</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="gestion">
-              <span class="activity-index">20</span>
-              <div>
-                <h3>Informar al superior inmediato</h3>
-                <p>Mantener al Jefe de Unidad al tanto de hallazgos, reportes y estado de equipos y datos.</p>
-                <span class="tag">Función 30 · Comunicación</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="gestion">
-              <span class="activity-index">21</span>
-              <div>
-                <h3>Conservar registros técnicos</h3>
-                <p>Organizar y preservar registros físicos y electrónicos de estudios, reportes y verificaciones.</p>
-                <span class="tag">Función 28 · Archivo</span>
-              </div>
-            </li>
-            <li class="activity" data-cat="gestion">
-              <span class="activity-index">22</span>
-              <div>
-                <h3>Aplicar lineamientos SGI y seguridad</h3>
-                <p>Cumplir control interno, SST y seguridad de la información en el manejo de datos SCADA.</p>
-                <span class="tag">Funciones 17 · 18 · 31</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing" id="cierre">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="num">03 · En una frase</p>
-          <h2>Síntesis del rol</h2>
-        </div>
-        <p class="summary reveal">
-          El cargo combina vigilancia con SCADA, estudios de calidad de potencia,
-          integridad del sistema de medida, reportes CREG/SUI y propuestas de mejora
-          para asegurar continuidad, calidad y seguridad del servicio.
-        </p>
-        <p class="meta reveal">
-          Fuente: Descripción de cargos · Profesional P1 Calidad de la Potencia Eléctrica · Versión 11 · CENS S.A. E.S.P.
-        </p>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer>
@@ -864,75 +1130,138 @@
 
   <script>
     (function () {
-      const reveals = document.querySelectorAll(".reveal, .activity");
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-      );
-      reveals.forEach((el, i) => {
-        if (el.classList.contains("activity")) {
-          el.style.transitionDelay = (i % 6) * 45 + "ms";
-        }
-        io.observe(el);
-      });
+      const tabs = document.querySelectorAll(".session-btn");
+      const panels = document.querySelectorAll(".session-panel");
 
-      // Filters
-      const filters = document.querySelectorAll(".filter");
-      const activities = document.querySelectorAll(".activity");
-      const groups = document.querySelectorAll(".group");
+      function observeReveals(root) {
+        const items = root.querySelectorAll(".reveal, .activity");
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        items.forEach((el, i) => {
+          if (el.classList.contains("activity")) {
+            el.style.transitionDelay = (i % 6) * 45 + "ms";
+          }
+          el.classList.remove("is-visible");
+          io.observe(el);
+        });
+      }
 
-      filters.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filters.forEach((b) => b.classList.remove("is-on"));
-          btn.classList.add("is-on");
-          const key = btn.dataset.filter;
+      function bindFilters(panel) {
+        const filters = panel.querySelectorAll(".filter");
+        const activities = panel.querySelectorAll(".activity");
+        const groups = panel.querySelectorAll(".group");
 
-          activities.forEach((item) => {
-            const show = key === "all" || item.dataset.cat === key;
-            item.classList.toggle("is-hidden", !show);
-            if (show) {
-              item.classList.remove("is-visible");
-              void item.offsetWidth;
-              item.classList.add("is-visible");
-            }
-          });
+        filters.forEach((btn) => {
+          btn.onclick = () => {
+            filters.forEach((b) => b.classList.remove("is-on"));
+            btn.classList.add("is-on");
+            const key = btn.dataset.filter;
 
-          groups.forEach((g) => {
-            const show = key === "all" || g.dataset.group === key;
-            g.style.display = show ? "" : "none";
-          });
+            activities.forEach((item) => {
+              const show = key === "all" || item.dataset.cat === key;
+              item.classList.toggle("is-hidden", !show);
+              if (show) {
+                item.classList.remove("is-visible");
+                void item.offsetWidth;
+                item.classList.add("is-visible");
+              }
+            });
+
+            groups.forEach((g) => {
+              const show = key === "all" || g.dataset.group === key;
+              g.style.display = show ? "" : "none";
+            });
+          };
+        });
+      }
+
+      let currentSession = "cp";
+
+      function activateSession(key) {
+        currentSession = key;
+        tabs.forEach((t) => {
+          const on = t.dataset.session === key;
+          t.classList.toggle("is-on", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        panels.forEach((p) => {
+          const on = p.dataset.session === key;
+          p.classList.toggle("is-on", on);
+          p.hidden = !on;
+          if (on) {
+            observeReveals(p);
+            bindFilters(p);
+          }
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          activateSession(tab.dataset.session);
+          document.getElementById("cargos").scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
 
-      // Active nav
-      const sections = ["mision", "actividades", "cierre"].map((id) =>
-        document.getElementById(id)
-      );
+      // Initial
+      const active = document.querySelector(".session-panel.is-on");
+      if (active) {
+        observeReveals(active);
+        bindFilters(active);
+      }
+      observeReveals(document.querySelector(".hero") || document.body);
+
       const links = document.querySelectorAll(".nav-links a");
+      const watchIds = ["cargos", "mision", "actividades", "cierre", "mision-bd", "actividades-bd", "cierre-bd"];
+
+      function sectionIdFor(base) {
+        if (base === "cargos") return "cargos";
+        return currentSession === "bd" ? base + "-bd" : base;
+      }
+
+      links.forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const base = (a.getAttribute("href") || "").replace("#", "");
+          if (!["mision", "actividades", "cierre"].includes(base)) return;
+          e.preventDefault();
+          const target = document.getElementById(sectionIdFor(base));
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
 
       const navIo = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              links.forEach((a) => {
-                a.classList.toggle(
-                  "is-active",
-                  a.getAttribute("href") === "#" + entry.target.id
-                );
-              });
-            }
+            if (!entry.isIntersecting) return;
+            let id = entry.target.id;
+            if (id === "mision-bd") id = "mision";
+            if (id === "actividades-bd") id = "actividades";
+            if (id === "cierre-bd") id = "cierre";
+            links.forEach((a) => {
+              a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+            });
           });
         },
         { rootMargin: "-40% 0px -45% 0px", threshold: 0.01 }
       );
-      sections.forEach((s) => s && navIo.observe(s));
+      watchIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) navIo.observe(el);
+      });
+
+      // Deep-link ?cargo=bd or #bd
+      const params = new URLSearchParams(location.search);
+      if (params.get("cargo") === "bd" || location.hash === "#bd") {
+        activateSession("bd");
+      }
     })();
   </script>
 </body>
